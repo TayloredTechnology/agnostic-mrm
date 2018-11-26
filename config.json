@@ -1,0 +1,45 @@
+{
+	"aliases": {
+		"init": [
+			"package",
+			"editorconfig",
+			"ignore",
+			"test",
+			"docco-github",
+			"git",
+			"prettier",
+			"xo",
+			"logs",
+			"labels",
+			"globals",
+			"finepack"
+		],
+		"meta": ["meta-docco", "docco"],
+		"sync": [
+			"editorconfig",
+			"ignore",
+			"test",
+			"prettier",
+			"xo",
+			"renovate",
+			"finepack"
+		]
+	},
+	"indent": "tab",
+	"licenseFile": "LICENSE",
+	"readmeFile": "README.md",
+	"globals": ["_"],
+	"license": "SEE LICENSE IN LICENSE",
+	"name": "Sotekton",
+	"url": "https://sotekton.com",
+	"minNode": "8",
+	"xoIgnores": ["app/backends/**/*.js"],
+	"coverage": {
+		"branches": 90,
+		"functions": 90,
+		"lines": 90,
+		"statements": 90
+	},
+	"codecovToken": "",
+	"source": "app/"
+}

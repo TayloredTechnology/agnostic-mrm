@@ -1,0 +1,122 @@
+{
+	"name": "mrm-preset-cloud-native",
+	"description": "Starter (Forkable) CodeMods approach to config management Cloud Native Projects",
+	"homepage": "https://github.com/sotekton/cloud-native-mrm#readme",
+	"version": "0.1.0",
+	"main": "config.json",
+	"author": {
+		"name": "Sotekton",
+		"url": "https://sotekton.com"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/sotekton/cloud-native-mrm.git"
+	},
+	"bugs": {
+		"url": "https://github.com/TayloredTechnology/cloud-native-mrm/issues"
+	},
+	"keywords": [
+		"cloud",
+		"mrm",
+		"mrm-task",
+		"native",
+		"sotekton"
+	],
+	"dependencies": {
+		"editorconfig-to-prettier": "0.1.1",
+		"execa": "1.0.0",
+		"fastest-validator": "0.6.12",
+		"finepack": "2.8.2",
+		"get-installed-path": "^4.0.8",
+		"git-label": "^4.1.1",
+		"git-username": "^1.0.0",
+		"is-installed": "^2.0.1",
+		"mkdirp": "^0.5.1",
+		"mrm-core": "3.3.0",
+		"mrm-task-editorconfig": "1.1.0",
+		"mrm-task-prettier": "1.2.5",
+		"npm-install-global": "^1.0.0",
+		"npm-install-package": "^2.1.0",
+		"ora": "3.0.0",
+		"per-env": "^1.0.2",
+		"redrun": "7.0.3",
+		"upath": "1.1.0",
+		"user-meta": "^1.0.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "7.2.1",
+		"@commitlint/config-conventional": "7.1.2",
+		"@commitlint/lint": "7.2.1",
+		"@commitlint/prompt-cli": "7.2.1",
+		"chuhai": "^1.2.0",
+		"clear-require": "3.0.0",
+		"codecov": "3.1.0",
+		"commentizer": "1.0.17",
+		"husky": "^1.2.0",
+		"jsdoc": "^3.5.5",
+		"lint-staged": "8.1.0",
+		"nyc": "13.1.0",
+		"prettier": "1.15.2",
+		"xo": "0.23.0"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"files": [
+		"*/index.js",
+		"config.json"
+	],
+	"scripts": {
+		"codecov:generate": "nyc report --reporter=text-lcov > coverage.lcov",
+		"codecov:upload": "codecov",
+		"commit": "commit",
+		"format": "redrun -p format:*",
+		"format:prettier": "prettier --write '**/*.{css,md}'",
+		"format:xo": "xo ./**/*.js"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"commitlint": {
+		"extends": [
+			"@commitlint/config-conventional"
+		]
+	},
+	"xo": {
+		"globals": [
+			"$",
+			"_",
+			"co"
+		],
+		"ignores": [],
+		"prettier": true,
+		"rules": {
+			"generator-star-spacing": "off",
+			"import/no-extraneous-dependencies": "off",
+			"import/no-unassigned-import": "off",
+			"import/no-unresolved": "off",
+			"import/order": "off",
+			"operator-linebreak": "off"
+		},
+		"semicolon": false
+	},
+	"lint-staged": {
+		"linters": {
+			"*.{js}": [
+				"xo",
+				"git add"
+			],
+			"*.{css,md}": [
+				"prettier --write",
+				"git add"
+			]
+		},
+		"ignore": [
+			"CHANGELOG.md"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged",
+			"commit-msg": "commitlint -e $GIT_PARAMS"
+		}
+	}
+}
