@@ -43,7 +43,7 @@ module.exports = config => {
 
 	if (pkg.getScript('test') !== 'undefined')
 		linters['*.{spec,sanity,api}.js'] = [
-			`nyc --per-file --check-coverage ${coverageOptions.join(' ')} tape`
+			`nyc --per-file --check-coverage ${coverageOptions.join(' ')} run-tests`
 		]
 
 	if (pkg.getScript('docco') !== 'undefined')

@@ -1,17 +1,28 @@
 {
 	"aliases": {
+		"cloud-native": [
+			"editorconfig",
+			"finepack",
+			"git",
+			"globals",
+			"ignore",
+			"logs",
+			"prettier",
+			"test",
+			"xo"
+		],
+		"github": ["docco-github", "labels"],
 		"init": [
 			"package",
 			"editorconfig",
 			"ignore",
 			"test",
-			"docco-github",
 			"git",
 			"prettier",
 			"xo",
 			"logs",
-			"labels",
 			"globals",
+			"renovate",
 			"finepack"
 		],
 		"meta": ["meta-docco", "docco"],
