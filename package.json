@@ -1,7 +1,7 @@
 {
-	"name": "mrm-preset-cloud-native",
+	"name": "mrm-preset-agnostic",
 	"description": "Starter (Forkable) CodeMods approach to config management Cloud Native Projects",
-	"homepage": "https://github.com/sotekton/cloud-native-mrm#readme",
+	"homepage": "https://github.com/sotekton/agnostic-mrm#readme",
 	"version": "0.1.0",
 	"main": "config.json",
 	"author": {
@@ -10,10 +10,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/sotekton/cloud-native-mrm.git"
+		"url": "git+https://github.com/sotekton/agnostic-mrm.git"
 	},
 	"bugs": {
-		"url": "https://github.com/TayloredTechnology/cloud-native-mrm/issues"
+		"url": "https://github.com/sotekton/agnostic-mrm/issues"
 	},
 	"keywords": [
 		"cloud",
@@ -67,8 +67,6 @@
 		"config.json"
 	],
 	"scripts": {
-		"codecov:generate": "nyc report --reporter=text-lcov > coverage.lcov",
-		"codecov:upload": "codecov",
 		"commit": "commit",
 		"format": "redrun -p format:*",
 		"format:prettier": "prettier --write '**/*.{css,md}'",
