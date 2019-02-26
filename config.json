@@ -1,6 +1,6 @@
 {
 	"aliases": {
-		"cloud-native": [
+		"agnostic": [
 			"editorconfig",
 			"finepack",
 			"git",
@@ -12,19 +12,6 @@
 			"xo"
 		],
 		"github": ["docco-github", "labels"],
-		"init": [
-			"package",
-			"editorconfig",
-			"ignore",
-			"test",
-			"git",
-			"prettier",
-			"xo",
-			"logs",
-			"globals",
-			"renovate",
-			"finepack"
-		],
 		"meta": ["meta-docco", "docco"],
 		"sync": [
 			"editorconfig",
@@ -35,22 +22,5 @@
 			"renovate",
 			"finepack"
 		]
-	},
-	"indent": "tab",
-	"licenseFile": "LICENSE",
-	"readmeFile": "README.md",
-	"globals": ["_"],
-	"license": "SEE LICENSE IN LICENSE",
-	"name": "Sotekton",
-	"url": "https://sotekton.com",
-	"minNode": "8",
-	"xoIgnores": ["app/backends/**/*.js"],
-	"coverage": {
-		"branches": 90,
-		"functions": 90,
-		"lines": 90,
-		"statements": 90
-	},
-	"codecovToken": "",
-	"source": "app/"
+	}
 }

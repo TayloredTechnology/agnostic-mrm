@@ -11,3 +11,4 @@ docs/
 node_modules/
 python_modules/
 yarn.lock
+*.swp
