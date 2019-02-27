@@ -6,25 +6,31 @@ module.exports = async config => {
 	const {dbType} = config.defaults({dbType: 'pg'}).values()
 
 	// Update Config Variables
-	json('./config/default.json').merge({
-		db: {
-			host: null,
-			user: null,
-			password: null,
-			port: 20114,
-			database: 'local'
-		}
-	})
-	json('./config/custom-environment-variables.json').merge({
-		db: {
-			host: 'DB_HOST',
-			user: 'DB_USER',
-			password: 'DB_PASSWORD'
-		}
-	})
-	json('./config/tap.json').merge({
-		db: {}
-	})
+	json('./config/default.json')
+		.merge({
+			db: {
+				host: null,
+				user: null,
+				password: null,
+				port: 20114,
+				database: 'local'
+			}
+		})
+		.save()
+	json('./config/custom-environment-variables.json')
+		.merge({
+			db: {
+				host: 'DB_HOST',
+				user: 'DB_USER',
+				password: 'DB_PASSWORD'
+			}
+		})
+		.save()
+	json('./config/tap.json')
+		.merge({
+			db: {}
+		})
+		.save()
 
 	// Update Scripts for DB Support
 	packageJson()
@@ -60,6 +66,8 @@ module.exports = async config => {
 		default:
 			console.error('MRM@database: dbType default called')
 	}
+
+	pkg.save()
 
 	install(devPackages, {dev: true})
 	install(packages, {dev: false})
