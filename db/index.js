@@ -1,9 +1,41 @@
 const {install, packageJson, json} = require('mrm-core')
 const replace = require('replace-in-file')
+const execa = require('execa')
 
 module.exports = async config => {
 	const {dbType} = config.defaults({dbType: 'pg'}).values()
 
+	// Update Config Variables
+	json('./config/default.json').merge({
+		db: {
+			host: null,
+			user: null,
+			password: null,
+			port: 20114,
+			database: 'local'
+		}
+	})
+	json('./config/custom-environment-variables.json').merge({
+		db: {
+			host: 'DB_HOST',
+			user: 'DB_USER',
+			password: 'DB_PASSWORD'
+		}
+	})
+	json('./config/tap.json').merge({
+		db: {}
+	})
+
+	// Update Scripts for DB Support
+	packageJson()
+		.setScript('start', 'knex-migrate up && node index.js')
+		.setScript(
+			'plop:db',
+			'plop --plopfile plop/plopfiles/db.js && redrun postplop'
+		)
+		.save()
+
+	// Install Relevant Packages
 	const pkg = json('package.json')
 	const packages = [
 		'objection',
@@ -29,16 +61,10 @@ module.exports = async config => {
 			console.error('MRM@database: dbType default called')
 	}
 
-	// Update Scripts for DB Support
-	packageJson()
-		.setScript('start', 'knex-migrate up && node index.js')
-		.save()
-
-	// Install
 	install(devPackages, {dev: true})
 	install(packages, {dev: false})
 
-	// Update PlopFile
+	// Update Root PlopFile
 	await replace({
 		files: './plopfile.js',
 		from:
@@ -51,6 +77,13 @@ module.exports = async config => {
 		to:
 			"/* MRMInjection */\nplop.setGenerator('new model', require('./plop/generators/new/db/model'))"
 	})
+
+	// Apply Prettier to Standardize Formatting
+	try {
+		await execa('./node_modules/.bin/prettier', ['--write', './plopfile.js'])
+	} catch (error) {
+		console.log(error)
+	}
 }
 
 module.exports.description = 'Extension to support Database Functionality'
