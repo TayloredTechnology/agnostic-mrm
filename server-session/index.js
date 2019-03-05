@@ -26,6 +26,11 @@ module.exports = async () => {
 	await replace({
 		files: './index.js',
 		from: '/* MRMInjection:ServerSession@Step1 */',
+		to: `.register(require('fastify-cookie'))`
+	})
+	await replace({
+		files: './index.js',
+		from: '/* MRMInjection:ServerSession@Step2 */',
 		to: `.register(require('fastify-server-session'), {
 					secretKey: config.session.secret,
 					sessionMaxAge: config.session.maxAge,
