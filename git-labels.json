@@ -59,7 +59,7 @@
     "name": "ʕノ•ᴥ•ʔノ ︵ ┻━┻",
     "color": "#003366"
   },
-  "default": [
+  "labelData": [
     {
       "name": "Status: Abandoned",
       "color": "#000000"
@@ -101,20 +101,24 @@
       "color": "#e11d21"
     },
     {
-      "name": "Type: Maintenance",
-      "color": "#fbca04"
+      "name": "Type: Duplicate",
+      "color": "#ffffff"
     },
     {
       "name": "Type: Enhancement",
       "color": "#84b6eb"
     },
     {
+      "name": "Type: Maintenance",
+      "color": "#fbca04"
+    },
+    {
       "name": "Type: Question",
       "color": "#cc317c"
     },
     {
-      "name": "┻━┻ ︵ ლ(⌒-⌒ლ)",
-      "color": "#cc6699"
+      "name": "ʕノ•ᴥ•ʔノ ︵ ┻━┻",
+      "color": "#003366"
     }
   ]
 }

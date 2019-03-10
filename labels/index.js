@@ -1,7 +1,9 @@
 /* eslint array-callback-return: 0 */
+/* eslint promise/prefer-await-to-then: 0 */
 
 const {json, packageJson} = require('mrm-core')
 const gitLabel = require('git-label')
+require('make-promises-safe')
 
 const labelConfig = {
 	api: 'https://api.github.com',
@@ -19,8 +21,10 @@ module.exports = () => {
 		{name: 'bug', color: ''},
 		{name: 'duplicate', color: ''},
 		{name: 'enhancement', color: ''},
-		{name: 'good first issue', color: ''},
+		{name: 'help wanted', color: ''},
+		{name: 'in progress', color: ''},
 		{name: 'invalid', color: ''},
+		{name: 'production', color: ''},
 		{name: 'question', color: ''},
 		{name: 'wontfix', color: ''}
 	]
