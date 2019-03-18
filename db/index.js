@@ -35,10 +35,6 @@ module.exports = async config => {
 	// Update Scripts for DB Support
 	packageJson()
 		.setScript('start', 'knex-migrate up && node index.js')
-		.setScript(
-			'plop:db',
-			'plop --plopfile plop/plopfiles/db.js && redrun postplop'
-		)
 		.save()
 
 	// Install Relevant Packages
@@ -74,13 +70,13 @@ module.exports = async config => {
 
 	// Update Root PlopFile
 	await replace({
-		files: './plopfile.js',
+		files: './plop-new.js',
 		from:
 			"plop.setGenerator('new model', require('./plop/generators/new/db/model'))",
 		to: ''
 	})
 	replace({
-		files: './plopfile.js',
+		files: './plop-new.js',
 		from: '/* MRMInjection */',
 		to:
 			"/* MRMInjection */\nplop.setGenerator('new model', require('./plop/generators/new/db/model'))"
@@ -88,7 +84,7 @@ module.exports = async config => {
 
 	// Apply Prettier to Standardize Formatting
 	try {
-		await execa('./node_modules/.bin/prettier', ['--write', './plopfile.js'])
+		await execa('./node_modules/.bin/prettier', ['--write', './plop-new.js'])
 	} catch (error) {
 		console.log(error)
 	}
